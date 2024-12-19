@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import markdownit from "markdown-it";
+import { Suspense } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import View from "@/components/View";
 const md = markdownit();
 
 export const experimental_ppr = true;
@@ -65,6 +68,10 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <hr className="divider" />
 
          {/* TODO: Editor selected startups  */}
+
+         <Suspense fallback={<Skeleton className="view_skeleton" />} >
+         <View id={id} />
+         </Suspense>
       </section>
 
 
